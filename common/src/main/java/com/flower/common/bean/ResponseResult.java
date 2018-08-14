@@ -49,5 +49,12 @@ public class ResponseResult implements Serializable {
         result.setStatusString("成功");
         return result;
     }
+
+    public static ResponseResult error(){
+        ResponseResult result = new ResponseResult();
+        result.setStatusCode(-1);
+        result.setStatusString("错误");
+        return result;
+    }
     
 }
