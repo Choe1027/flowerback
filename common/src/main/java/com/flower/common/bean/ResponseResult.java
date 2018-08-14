@@ -41,5 +41,13 @@ public class ResponseResult implements Serializable {
     public void setData(Object data) {
         this.data = data;
     }
+
+
+    public static ResponseResult ok(){
+        ResponseResult result = new ResponseResult();
+        result.setStatusCode(1);
+        result.setStatusString("成功");
+        return result;
+    }
     
 }
