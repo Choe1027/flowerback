@@ -1,5 +1,7 @@
 package com.flower.common.bean;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import java.io.Serializable;
 
 /**
@@ -11,6 +13,7 @@ import java.io.Serializable;
  * @modify_time
  * @modify_remark
  */
+@JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
 public class ResponseResult implements Serializable {
     private static final long serialVersionUID = 1L;
     
@@ -42,18 +45,35 @@ public class ResponseResult implements Serializable {
         this.data = data;
     }
 
+    public  ResponseResult(){
+
+    }
+
+    public ResponseResult(Object data) {
+        this(1,"OK",data);
+    }
+
+    public ResponseResult(Integer statusCode, String statusString) {
+        this(statusCode,statusString,null);
+    }
+
+    public ResponseResult(Integer statusCode, String statusString, Object data) {
+        this.statusCode = statusCode;
+        this.statusString = statusString;
+        this.data = data;
+    }
 
     public static ResponseResult ok(){
         ResponseResult result = new ResponseResult();
         result.setStatusCode(1);
-        result.setStatusString("成功");
+        result.setStatusString("OK");
         return result;
     }
 
     public static ResponseResult error(){
         ResponseResult result = new ResponseResult();
         result.setStatusCode(-1);
-        result.setStatusString("错误");
+        result.setStatusString("系统异常");
         return result;
     }
     

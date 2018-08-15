@@ -1,6 +1,5 @@
 package com.flower.api.ctrl;
 
-import com.flower.common.bean.ResponseResult;
 import com.flower.core.bean.NavigationBean;
 import com.flower.core.service.NavigationService;
 
@@ -31,9 +30,14 @@ public class NavigatorController {
     public Object getList(){
 
         List<NavigationBean> navigationBeans = navigationService.getListSortByOrderNo();
-        ResponseResult result = new ResponseResult();
-//        result.setStatusCode();
-
+//        ResponseResult result = null;
+//        result.getData();
+//        try {
+//            File file = new File("/aaa/a.txt");
+//            FileInputStream fis = new FileInputStream(file);
+//        } catch (FileNotFoundException e) {
+//            throw new SysException(Error.system_error,e);
+//        }
         return navigationBeans;
     }
 }

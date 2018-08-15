@@ -1,5 +1,7 @@
 package com.flower.common.bean;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -12,6 +14,7 @@ import java.util.Objects;
  * @modify_time
  * @modify_remark
  */
+@JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
 public class BaseBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
