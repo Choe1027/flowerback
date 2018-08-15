@@ -54,6 +54,11 @@ public interface Context {
     String session_userId = "session_userId";
 
     /**
+     * session中存储userName 的key
+     */
+    String session_userName = "session_userName";
+
+    /**
      * session中存储用户类型的key
      */
     String session_userType = "session_userType";

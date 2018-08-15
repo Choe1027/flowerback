@@ -22,7 +22,7 @@ public class NavigationBean extends BaseBean {
     /**图片链接*/
     private String url;
     /**描述*/
-    private String desc;
+    private String remark;
     /** 启用状态 0启用 1禁用*/
     private Integer state;
     /** 排序号*/
@@ -36,12 +36,12 @@ public class NavigationBean extends BaseBean {
         this.url = url;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getRemark() {
+        return remark;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 
     public Integer getState() {

@@ -4,6 +4,8 @@ import com.flower.core.bean.NavigationBean;
 import com.flower.core.service.NavigationService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,16 +30,16 @@ public class NavigatorController {
 
     @RequestMapping(method = {RequestMethod.GET})
     public Object getList(){
-
         List<NavigationBean> navigationBeans = navigationService.getListSortByOrderNo();
-//        ResponseResult result = null;
-//        result.getData();
-//        try {
-//            File file = new File("/aaa/a.txt");
-//            FileInputStream fis = new FileInputStream(file);
-//        } catch (FileNotFoundException e) {
-//            throw new SysException(Error.system_error,e);
-//        }
         return navigationBeans;
+    }
+
+    @RequestMapping(value = "/{id}",method = {RequestMethod.PUT})
+    public Object update(@PathVariable("id") Long id, @RequestBody NavigationBean navigationBean){
+//        navigationBean = null;
+        navigationBean.setId(id);
+        navigationService.update(navigationBean);
+
+        return "更新成功";
     }
 }
