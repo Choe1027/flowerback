@@ -11,8 +11,10 @@ package com.flower.common.exception;
  */
 public enum Error {
 
-    id_must_not_be_null(100,"id参数不能为空","缺少id")
-    ;
+    id_must_not_be_null(100,"id不能为空","缺少参数"),
+    system_error(-1, "系统异常", "系统服务异常"),
+    notKnow_error(-2,"未知错误" ,"系统服务异常" ),
+    biz_error(-3,"业务错误","系统服务异常");
     /**
      * 异常码
      */

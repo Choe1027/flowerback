@@ -1,8 +1,5 @@
 package com.flower.common.exception;
 
-import com.flower.common.utils.LoggerUtil;
-import com.flower.common.utils.StringUtil;
-
 /**
  * @author cyk
  * @date 2018/8/14/014 14:34
@@ -12,40 +9,31 @@ import com.flower.common.utils.StringUtil;
  * @modify_time
  * @modify_remark
  */
-public class SysException extends RuntimeException {
+public class SysException extends BaseException {
 
     private static final long serialVersionUID = 6812202525292547656L;
 
-    private String remark;
-
-    public SysException(){
+    public SysException() {
         super();
     }
 
     public SysException(String remark) {
-        this.remark = remark;
+        super(Error.system_error, remark);
     }
 
-    public SysException(String message, Throwable cause) {
-        super(message, cause);
+    public SysException(Exception e) {
+        super(Error.system_error, e);
     }
 
-    public SysException(Throwable cause) {
-        super(cause);
+    public SysException(String remark, Exception e) {
+        super(Error.system_error, e, remark);
     }
 
-    public SysException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-        super(message, cause, enableSuppression, writableStackTrace);
+    public SysException(Error errorCode, String... remark) {
+        super(errorCode, remark);
     }
 
-
-    @Override
-    public String getMessage() {
-        return StringUtil.isEmpty(remark)?super.getMessage():remark;
-    }
-
-    @Override
-    public void printStackTrace() {
-        LoggerUtil.error(this.getClass(),remark);
+    public SysException(Error errorCode, Throwable e, String... remark) {
+        super(errorCode, e, remark);
     }
 }
